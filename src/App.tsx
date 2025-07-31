@@ -1,25 +1,48 @@
 import './styles/theme.css'
 import './styles/global.css'
-import { Heading } from './components/Heading'
-import { TimerIcon } from 'lucide-react'
+import { Container } from './components/Container'
+import { Logo } from './components/Logo'
+import { Menu } from './components/Menu'
+import { CountDown } from './components/CountDown'
+import { DefaultInput } from './components/DefaultInput'
 
 export function App() {
   return (
-    <div>
-      <Heading>
-        Olá Mundo
-        <button>
-          <TimerIcon />
-        </button>
-      </Heading>
+    <>
+      <Container>
+        <Logo />
+      </Container>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati mollitia maxime ut placeat voluptates totam, expedita consequuntur cumque eos ab porro recusandae accusamus ipsum. Ab vero tempora aliquid numquam incidunt!</p>
+      <Container>
+        <Menu />
+      </Container>
 
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam enim, maiores mollitia labore, magnam iste repellat quia officiis quisquam nam laboriosam, sequi neque! A dignissimos necessitatibus unde amet numquam. Quisquam!
-      </p>
+      <Container>
+        <CountDown />
+      </Container>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium labore quos, reiciendis numquam voluptate nam. Natus dolorum ad consequatur necessitatibus doloremque tempora repellat corrupti? Ullam suscipit doloremque totam adipisci nulla.</p>
-    </div>
+      <Container>
+        <form className='form' action="">
+          <div className='formRow'>
+            <DefaultInput
+              type='text'
+              id='myInput'
+              labelText='task'
+              placeholder='Leitura'
+            />
+          </div>
+          <div className='formRow'>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div className='formRow'>
+            <p>Ciclos</p>
+            <p>0 0 0 0 0 0 0 0</p>
+          </div>
+          <div className='formRow'>
+            <button>Enviar</button>
+          </div>
+        </form>
+      </Container>
+    </>
   )
 }
