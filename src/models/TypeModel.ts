@@ -1,5 +1,1 @@
-export type TypeModel = {
-  workTime: number
-  shortBreakTime: number
-  longBreakTime: number
-}
+export type TypeModel = 'workTime' | 'shortBreakTime' | 'longBreakTime'
