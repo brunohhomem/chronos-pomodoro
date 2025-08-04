@@ -1,4 +1,4 @@
-import type { TypeModel } from './TypeModel'
+import type { TaskStateModel } from './TaskStateModel'
 
 export type TaskModel = {
   id: string
@@ -7,5 +7,5 @@ export type TaskModel = {
   startDate: number
   completeDate: number | null
   interruptedDate: number | null
-  type: TypeModel
+  type: keyof TaskStateModel['config']
 }

@@ -5,10 +5,15 @@ import { DefaultInput } from '../DefaultInput';
 import { useRef } from 'react';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import type { TaskModel } from '../../models/TaskModel';
+import { getNextCycle } from '../../utils/getNextCycle';
+import { getNextCycleType } from '../../utils/getNextCycleType';
+import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 export function MainForm() {
-  const { setState } = useTaskContext();
+  const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
+  const nextCycle = getNextCycle(state.currentCycle)
+  const nextCycleType = getNextCycleType(nextCycle)
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,8 +33,8 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptedDate: null,
-      duration: 1,
-      type: 'workTime',
+      duration: state.config[nextCycleType],
+      type: nextCycleType
     };
 
     const secondsRemaining = newTask.duration * 60;
@@ -39,9 +44,9 @@ export function MainForm() {
         ...prevState,
         config: { ...prevState.config },
         activeTask: newTask,
-        currentCycle: 1, // Conferir
+        currentCycle: nextCycle, // Conferir
         secondsRemaining, // Conferir
-        formattedSecondsRemaining: '00:00', // Conferir
+        formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining), // Conferir
         tasks: [...prevState.tasks, newTask],
       };
     });
@@ -63,9 +68,11 @@ export function MainForm() {
         <p>Próximo intervalo é de 25min</p>
       </div>
 
-      <div className='formRow'>
-        <Cycles />
-      </div>
+      {state.currentCycle > 0 && (
+        <div className='formRow'>
+          <Cycles />
+        </div>
+      )}
 
       <div className='formRow'>
         <DefaultButton icon={<PlayCircleIcon />} />
