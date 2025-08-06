@@ -5,6 +5,7 @@ import { NotFound } from "../../pages/NotFound";
 
 import { useLocation } from 'react-router'
 import { useEffect } from 'react'
+import { History } from "../../pages/History";
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -22,6 +23,7 @@ export function MainRouter() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about-pomodoro/' element={<AboutPomodoro />} />
+        <Route path='/history/' element={<History />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <ScrollToTop />

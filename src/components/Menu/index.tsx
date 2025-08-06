@@ -35,7 +35,7 @@ export function Menu() {
       <RouterLink href="/" className={styles.menuLink} aria-label='home' title='Home'>
         <HouseIcon />
       </RouterLink>
-      <RouterLink href="#" className={styles.menuLink} aria-label='histórico' title='Histórico'>
+      <RouterLink href="/history" className={styles.menuLink} aria-label='histórico' title='Histórico'>
         <HistoryIcon />
       </RouterLink>
       <RouterLink href="#" className={styles.menuLink} aria-label='configurações' title='Configurações'>
