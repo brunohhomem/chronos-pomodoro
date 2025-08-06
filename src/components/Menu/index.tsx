@@ -38,7 +38,7 @@ export function Menu() {
       <RouterLink href="/history" className={styles.menuLink} aria-label='histórico' title='Histórico'>
         <HistoryIcon />
       </RouterLink>
-      <RouterLink href="#" className={styles.menuLink} aria-label='configurações' title='Configurações'>
+      <RouterLink href="/settings" className={styles.menuLink} aria-label='configurações' title='Configurações'>
         <SettingsIcon />
       </RouterLink>
       <a href="#" className={styles.menuLink} aria-label='tema' title='Mudar Tema' onClick={handleThemeChange}>
